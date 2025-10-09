@@ -1,0 +1,164 @@
+.grass {
+    background-color: rgb(10, 167, 10);
+}
+
+.border-grass {
+    border-color: rgb(10, 167, 10)!important;
+    border: 5px solid; 
+}
+
+.poison {
+    background-color: rgb(0, 255, 0);
+}
+
+.border-poison {
+    border-color: rgb(0, 255, 0)!important;
+    border: 5px solid; 
+}
+
+.fire {
+    background-color: rgb(240, 22, 22);
+}
+
+.border-fire {
+    border-color: rgb(240, 22, 22)!important;
+    border: 5px solid; 
+}
+
+.water {
+    background-color: rgb(55, 22, 240);
+}
+
+.border-water {
+    border-color: rgb(55, 22, 240)!important;
+    border: 5px solid; 
+}
+
+.electric {
+    background-color: rgb(247, 247, 32);
+}
+
+.border-electric {
+    border-color: rgb(247, 247, 32)!important;
+    border: 5px solid; 
+}
+
+
+.flying {
+    background-color: rgb(42, 252, 248);
+}
+
+.border-flying {
+    border-color: rgb(42, 252, 248)!important;
+    border: 5px solid; 
+}
+
+.normal {
+    background-color: rgb(244, 31, 212);
+}
+
+.border-normal {
+    border-color: rgb(244, 31, 212)!important;
+    border: 5px solid; 
+}
+
+.ice {
+    background-color: rgb(184, 174, 239);
+}
+
+.border-ice {
+    border-color: rgb(184, 174, 239)!important;
+    border: 5px solid; 
+}
+
+.fighting {
+    background-color: rgb(254, 152, 18);
+}
+
+.border-fighting  {
+    border-color: rgb(254, 152, 18)!important;
+    border: 5px solid; 
+}
+
+.ground {
+    background-color: rgb(141, 84, 47);
+}
+
+.border-ground  {
+    border-color:rgb(141, 84, 47)!important;
+    border: 5px solid; 
+}
+
+.psychic {
+    background-color: rgb(228, 55, 237);
+}
+
+.border-psychic  {
+    border-color:rgb(228, 55, 237)!important;
+    border: 5px solid; 
+}
+
+.bug {
+    background-color: rgb(32, 178, 163);
+}
+
+.border-bug  {
+    border-color:rgb(32, 178, 163)!important;
+    border: 5px solid; 
+}
+
+.rock {
+    background-color: rgb(143, 148, 148);
+}
+
+.border-bug  {
+    border-color:rgb(32, 178, 163)!important;
+    border: 5px solid; 
+}
+
+.ghost {
+    background-color: rgb(221, 235, 235);
+}
+
+.border-bug  {
+    border-color:rgb(32, 178, 163)!important;
+    border: 5px solid; 
+}
+
+.dragon {
+    background-color: rgb(228, 114, 133);
+}
+
+.border-dragon  {
+    border-color:rgb(228, 114, 133)!important;
+    border: 5px solid; 
+}
+
+.dark {
+    background-color: rgb(22, 51, 51);
+}
+
+.border-dark  {
+    border-color:rgb(22, 51, 51)!important;
+    border: 5px solid; 
+}
+
+.steel {
+    background-color: rgb(178, 187, 187);
+}
+
+.border-steel  {
+    border-color:rgb(178, 187, 187)!important;
+    border: 5px solid; 
+}
+
+.fairy {
+    background-color: rgb(231, 166, 237);
+}
+
+.border-fairy  {
+    border-color:rgb(231, 166, 237)!important;
+    border: 5px solid; 
+}
+
+

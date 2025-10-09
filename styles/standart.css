@@ -1,0 +1,75 @@
+@font-face { 
+    font-family: "raleway";
+    src: url('./fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+.d_none {
+    display:none !important; 
+}
+
+.background-dark {
+    background-color: rgb(26, 35, 75);
+}
+
+.w100 {
+    width:100%   ; 
+}
+
+.pad_btm {
+    padding-bottom: 30px; 
+}
+
+header {
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding-right: 200px; 
+    padding-left: 200px;
+    background-color: cornflowerblue;
+    gap: 100px; 
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+.img_header {
+    height: 40px; 
+    width: auto; 
+}
+
+.img_gotcha {
+    height: 80px; 
+    width: auto; 
+}
+
+.input p {
+    margin-bottom:0px !important; 
+}
+
+.headline {
+    display:flex; 
+    justify-content: center;
+    gap: 10px; 
+    color:rgb(26, 35, 75);
+}
+
+.btn {
+    color:white !important;
+    border: 1px solid white !important;  
+}
+
+.display_flex {
+    display:flex; 
+    justify-content:center; 
+    align-items: center; 
+}
+
+.p_bm {
+    padding-bottom: 100px !important; 
+}

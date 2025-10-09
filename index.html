@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link  rel="icon" type="image/png" href="./img/pokeball.png" width:16px;>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/standart.css">
+    <link rel="stylesheet" href="./styles/colors.css">
+    <link rel="stylesheet" href="./styles/pokemon_detail_view.css">
+    <script src="script.js"></script>
+    <script src="template.js"></script>
+
+    <!-- Bootstrap files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body id="body" onload="init()">
+    <header>
+        <div class="headline">
+        <img class="img_header" src="./img/pokeball.png">
+        <h1>Find your favourite Pokémon</h1>
+        <img class="img_header" src="./img/pokeball.png">
+        </div>
+        <input id="search" type="text" placeholder="Search your Pokémon..." oninput="filterAndShowNames(this.value)">
+        <img class="img_gotcha" src="./img/gotcha.png">
+
+    </header>
+
+    <section class="all_pokemons">
+
+        <div class="blue-overlay d_none" id="blue_overlay" onclick="closeDialogue()">
+
+            <!-- gesamter kleiner Dialog mit Bildfullviewfenster, Bei Klick schließt sich dieser -->
+            <!-- Hier wird die große Pokemonkarte eingerendert -->
+        </div>
+
+        <div>
+                <div id="names" class="poke_view"></div>
+                <div id="button" class="display_flex p_bm"></div>
+
+            <!-- Hier sind pokemons drin und werden mit onload reingerendert, am besten 4er Reihen-->
+            <!-- Dann kann man es beim responsive machen gut trennen; -->
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
