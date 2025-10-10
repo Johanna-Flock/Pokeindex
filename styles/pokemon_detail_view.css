@@ -129,3 +129,30 @@ width: auto;
     font-weight: 800 !important; 
 
 }
+
+.evo_details {
+    background-color: rgb(26, 35, 75); 
+    height:430px; 
+    width: 970px;
+    border-radius: 0 0 4% 4%;
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    gap: 30px; 
+
+}
+
+.evo_img {
+    height:100px;
+    width:auto;
+}
+
+.evo_arrow {
+    height: 60px; 
+    width:auto; 
+}
+
+.arrow {
+    height: 40px; 
+    width:auto; 
+}

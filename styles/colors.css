@@ -111,8 +111,8 @@
     background-color: rgb(143, 148, 148);
 }
 
-.border-bug  {
-    border-color:rgb(32, 178, 163)!important;
+.border-rock {
+    border-color: rgb(143, 148, 148)!important;
     border: 5px solid; 
 }
 

@@ -43,9 +43,9 @@ function getTemplateOneTyp (i, abilities) {
     <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
     </div>
     <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" id="main" disabled class="btn folder" onclick="renderMain(${i})">MAIN</button>
+    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
     <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
-    <button type="button" id="evo" class="btn folder">EVO</button>
+    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
     </div>
     <div class="all_details" id="all_details">
     <div class="main_details"> 
@@ -74,9 +74,9 @@ function getTemplateTwoTypes (i,abilities) {
     <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_detail" alt="">
     </div>
     <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" id="main" disabled class="btn folder" onclick="renderMain(${i})">MAIN</button>
+    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
     <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
-    <button type="button" id="evo" class="btn folder">EVO</button>
+    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
     </div>
     <div class="all_details" id="all_details">
     <div class="main_details"> 
@@ -94,8 +94,22 @@ function getTemplateTwoTypes (i,abilities) {
 
 
 function renderStatTemplate(i) {
-    document.getElementById("all_details").innerHTML =`
-   <div class="stat_details"> 
+    document.getElementById("blue_overlay").innerHTML +=`
+    <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
+    <header class="${PokeDetails[i].types[0].type.name} ">
+    <h2 class="poke_names">${allPkms[i]}</h2>
+    </header>
+    <div class="background-dark w100 d_flex pad_btm">
+    <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">
+    <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
+    <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_detail" alt="">
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
+    <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
+    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
+    </div>
+    <div class="stat_details"> 
     <ul class="list-group stat_list">
     <li class="list-group-item stat_row">hp:
     <div class="progress stat_progress">
@@ -130,4 +144,34 @@ function renderStatTemplate(i) {
     </ul>
     </div>
   `
+}
+
+
+function renderEvoTemplate(ifp,isp,itp,i) {
+    document.getElementById("blue_overlay").innerHTML +=`
+    <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
+    <header class="${PokeDetails[i].types[0].type.name} ">
+    <h2 class="poke_names">${allPkms[i]}</h2>
+    </header>
+    <div class="background-dark w100 d_flex pad_btm">
+    <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">
+    <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
+    <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_detail" alt="">
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
+    <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
+    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
+    </div>
+    <img src="./img/left-arrow.png" class="arrow" onclick= "nextPokeLeft(${i},event)"> </img>
+    <img src="./img/right-arrow.png" class="arrow" onclick= "nextPokeRight(${i},event)"> </img>
+    <div class="evo_details"> 
+    <img src="${PokeDetails[ifp].sprites.other.home.front_default}" class="detail_img" alt=""></img>
+    <img src="./img/dot-arrow.png" class="evo_arrow"></img>
+    <img src="${PokeDetails[isp].sprites.other.home.front_default}" class="detail_img" alt=""></img>
+    <img src="./img/dot-arrow.png" class="evo_arrow"></img>
+    <img src="${PokeDetails[itp].sprites.other.home.front_default}" class="detail_img" alt=""></img>
+    </div>
+    `
+
 }
