@@ -11,7 +11,7 @@ let allResults =[]; //all loaded pkms with char(0).lowerCase
 let evoChain  = {}; //object Evo-chain
 
 let pokeEvolution = []; //array with current loaded poke-evolution; first is 0
-
+let indexPokeEvo= []; //array with index in PokeDetails of current loaded poke-evolution
 
 function init() {
     let path = `?limit=20&offset=0`
@@ -58,11 +58,7 @@ function renderPokes () {
 let contentRef = document.getElementById("names")
 contentRef.innerHTML = ""; 
  for (let i= 0; i< allPkms.length; i++) {
-    if (!PokeDetails[i].types[1]) {
-        showPokeWithOneType (i)
-    }
-    else {showPokeWithTwoTypes (i)}
- }
+  showPokemon (i) }
  renderButton()
 }
 
@@ -70,12 +66,10 @@ contentRef.innerHTML = "";
 function filterAndShowNames(filterWord) {
     let contentRef = document.getElementById("names")
     contentRef.innerHTML = ""; 
-    if (filterWord.length < 3) {
-    renderPokes()
-  } else {
+    if (filterWord.length < 3) {renderPokes()} 
+    else {
     currentPkms = allPkms.filter(name => name.toLowerCase().startsWith(filterWord.toLowerCase()));
-    renderPokesSearch()
-  } 
+    renderPokesSearch() } 
 }
 
 //show found Pokes
@@ -86,13 +80,8 @@ function renderPokesSearch() {
     const name = currentPkms[index]
     const i = allPkms.findIndex(p => p.toLowerCase() === name.toLowerCase());
     if (i === -1) continue; // if there`s no suitable index
-    if (!PokeDetails[i].types[1]) {
-      showPokeWithOneType(i);
-    } else {
-      showPokeWithTwoTypes(i);
-    }
-  }
-  renderButton()
+    else showPokemon(i)}
+    renderButton()
 }
 
 //load more Pokes
@@ -104,6 +93,7 @@ function renderMorePokes() {
 
 async function getMorePokemons (path) {
     document.getElementById('loading').classList.remove('d_none');
+    document.getElementById("button").classList.add('d_none')
     try {
     let response = await fetch (BASE_URL + path)
     let responseAsJson = await response.json()
@@ -116,18 +106,16 @@ async function getMorePokemons (path) {
       console.error("Ups, loading has not worked - please try again" , error)
     } finally {
       document.getElementById('loading').classList.add('d_none');
+      document.getElementById("button").classList.remove('d_none')
     }
 }
 
 //render PokeDetails
 function renderPokeDetails (i) {
   let abilities = getAbilities(i)
-  if (!PokeDetails[i].types[1]) {
-        getTemplateOneTyp (i, abilities)
-    }
-    else {
-        getTemplateTwoTypes (i, abilities)
-    }
+  getTemplatePokeDetails (i)
+  renderMainTemplate(i, abilities)
+  document.getElementById("main").classList.add("current_folder")
 }
 
 function getAbilities (i) {
@@ -143,89 +131,100 @@ function getAbilities (i) {
 
 //function to show main
 function renderMain(i, event) {
-  // document.getElementById("all_details").innerHTML ="";
   preventBubbling(event)
-  renderPokeDetails (i)
+  document.getElementById("blue_overlay").innerHTML =""; 
+  getTemplatePokeDetails (i)
+  let abilities = getAbilities(i)
+  renderMainTemplate(i, abilities)
+  document.getElementById("main").classList.add("current_folder")
 }
 
 //function to show stat
 function renderStat (i, event) {
   preventBubbling(event)
-  // document.getElementById("all_details").innerHTML ="";
+  document.getElementById("blue_overlay").innerHTML =""; 
+  getTemplatePokeDetails (i)
   renderStatTemplate(i)
+  document.getElementById("stat").classList.add("current_folder")
 }
 
 //functions for evolution
 //main-function
 async function fetchEvoAndRender(i, event) {
   preventBubbling(event)
-  let name = allPkms[i].charAt(0).toLowerCase() + allPkms[i].slice(1)
-  let Id= await getEvoChainId (name)
-  await getEvoChain (Id)
-  getEvoArray(); 
-  let ifp = findIndexOfFirstEvoPoke ()
-  let isp = findIndexOfSecondEvoPoke ()
-  let itp = findIndexOfThirdEvoPoke ()
   document.getElementById("blue_overlay").innerHTML =""; 
-  renderEvoTemplate(ifp,isp,itp,i)
+  getTemplatePokeDetails (i)
+  await fetchEvo(i)
+  findIndexOfEvoPokes()
+  renderEvoTemplate(i)
+  document.getElementById("evo").classList.add("current_folder")
+}
+
+async function fetchEvo(i) {
+  let name = allPkms[i].charAt(0).toLowerCase() + allPkms[i].slice(1)
+  try {
+  let Id= await getEvoChainId (name)
+  await getEvoChain (Id)}
+  catch (error) {
+      console.error("Ups, loading the evolution-chain has failed - please try again" , error)}
+  getEvoArray(); 
 }
 
 async function getEvoChainId (name) {
+   try {
   const evoChainIdResponse = await fetch (`https://pokeapi.co/api/v2/pokemon-species/${name}`)
   const evoChainIdData = await evoChainIdResponse.json(); 
   const evoChainUrl = evoChainIdData.evolution_chain.url
-  const getId = evoChainUrl.split('/').filter(Boolean); 
+  const getId = evoChainUrl.split('/').filter(Boolean);
   let evoChainId = getId[getId.length - 1]
-  return evoChainId
+  return evoChainId }
+  catch (error) {
+  console.error("Ups, loading the evolution-id has failed - please try again" , error)}
 }
 
 async function getEvoChain (Id){
+   try {
   const response = await fetch (`https://pokeapi.co/api/v2/evolution-chain/${Id}/`)
   const evoChainData = await response.json(); 
-  evoChain = evoChainData.chain
+  evoChain = evoChainData.chain}
+  catch (error) {
+  console.error("Ups, loading the evolution-chain has failed - please try again" , error)}
 }
 
 function getEvoArray () {
-  let firstPoke = evoChain.species.name
+  pokeEvolution =[]; 
+  const firstPoke = evoChain.species.name
   pokeEvolution.push(firstPoke.charAt(0).toUpperCase() + firstPoke.slice(1))
-  if (evoChain.evolves_to[0].species.name){ 
-  let secondPoke = evoChain.evolves_to[0].species.name
-  pokeEvolution.push(secondPoke.charAt(0).toUpperCase() + secondPoke.slice(1)) }
-  if (evoChain.evolves_to[0].evolves_to[0].species.name) {
-  let thirdPoke = evoChain.evolves_to[0].evolves_to[0].species.name
-  pokeEvolution.push(thirdPoke.charAt(0).toUpperCase() + thirdPoke.slice(1)) }
+  evoChain.evolves_to[0]?.species?.name? 
+        pokeEvolution.push(
+        evoChain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+        evoChain.evolves_to[0].species.name.slice(1)): null;
+  evoChain.evolves_to[0]?.evolves_to[0]?.species?.name? 
+        pokeEvolution.push(
+        evoChain.evolves_to[0].evolves_to[0].species.name.charAt(0).toUpperCase() +
+        evoChain.evolves_to[0].evolves_to[0].species.name.slice(1)): null;
 }
 
-//functions to find index of EvoPokes
-function findIndexOfFirstEvoPoke () {
+//find index of EvoPokes
+function findIndexOfEvoPokes() {
+  indexPokeEvo =[]; 
   let iFirstPoke = allPkms.findIndex(p => p === pokeEvolution[0])
-  return iFirstPoke
+  indexPokeEvo.push(iFirstPoke)
+  pokeEvolution[1]? indexPokeEvo.push(allPkms.findIndex(p => p === pokeEvolution[1])) :null; 
+  pokeEvolution[2]? indexPokeEvo.push(allPkms.findIndex(p => p === pokeEvolution[2])) : null; 
 }
 
-function findIndexOfSecondEvoPoke () {
-  let iSecondPoke = allPkms.findIndex(p => p === pokeEvolution[1])
-  return iSecondPoke
-}
-
-function findIndexOfThirdEvoPoke () {
-  let iThirdPoke = allPkms.findIndex(p => p === pokeEvolution[2])
-  return iThirdPoke
-}
 
 //show nextPoke
-
 function nextPokeRight(i, event) {
   i++
   preventBubbling(event)
   document.getElementById("blue_overlay").innerHTML = ""; 
   pokeEvolution = []; 
-  if (i<allPkms.length) {
-    renderPokeDetails (i)
-  }
+  if (i<allPkms.length) {renderPokeDetails (i)}
   else {
     i=0
-    renderPokeDetails (i)
-  }
+    renderPokeDetails (i)}
 }
 
 function nextPokeLeft(i, event) {
@@ -253,9 +252,11 @@ function showDetails(i) {
 }
 
 function closeDialogue() {
+  document.getElementById("blue_overlay").innerHTML =""; 
   document.getElementById("blue_overlay").classList.add("d_none")
   document.getElementById("body").classList.remove("noscroll")
   document.getElementById("names").classList.remove("d_none")
   document.getElementById("button").classList.remove("d_none")
   pokeEvolution = []; 
+  indexPokeEvo= []; 
 }

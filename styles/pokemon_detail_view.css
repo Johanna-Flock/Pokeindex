@@ -2,6 +2,8 @@
     position:fixed;
     display:flex;
     justify-content:center;
+    flex-direction: column;
+    align-items: center;
     top:100px; 
     right:0px; 
     left:0px; 
@@ -10,7 +12,7 @@
     background-color:rgb(26, 35, 75);
 }
 
-/* große Karte, welche geöffnet wird bei Klick auf ein kleines Pokemon */
+/* styles for pokemon-Details */
 
 .detail_pokemon { 
     position:fixed; 
@@ -43,7 +45,7 @@
 }
 
 .detail_pokemon header {
-    width: 100%; 
+    width: 600px; 
     border-radius: 30px 30px 0 0;
 }
 
@@ -61,21 +63,41 @@
     border: 1px solid rgb(26, 35, 75) !important; 
     width: 130px !important; 
     font-weight: 500 !important;
+    
+}
+
+.btn-group {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    flex: 1 1 auto;
+    cursor: pointer;
+
+
 }
 
 .main_details {
     background-color: rgb(26, 35, 75); 
-    height:270px; 
+    height:418px; 
     width: 970px;
     border-radius: 0 0 4% 4%;
+    display:flex; 
+    flex-direction: column;
+    position: relative; 
+    top: 86px; 
 }
 
 .main_list {
 margin-top: 60px; 
 margin-left: 40px; 
 margin-right: 40px;
+margin-bottom: 0;
 width: auto; 
-
+display: flex;
+flex-direction: column;
+padding-left: 0;
+border-radius: .25rem;
 }
 
 .main_row {
@@ -83,36 +105,43 @@ width: auto;
  font-size: 24px; 
  font-weight: 500;
  text-align: left; 
- padding-left: 50px !important; 
+ padding-left: 30px !important;
+ position: relative;
+ display: block;
+ padding: .5rem 1rem;
+ text-decoration: none;
+ border: 1px solid rgba(0, 0, 0, .125);
 }
 
 
-.all_details {
-    background-color: rgb(26, 35, 75); 
-    border-radius: 0 0 4% 4%;
-    display:flex; 
-    justify-content: center; 
-    flex-direction: column;
-}
 
 .img_dream {
-    padding-bottom: 20px; 
+    padding-top: 20px; 
     height:160px;
-    width:auto;  
+    width:auto; 
 }
 
 .stat_details {
     background-color: rgb(26, 35, 75); 
-    height:430px; 
+    height:418px; 
     width: 970px;
     border-radius: 0 0 4% 4%;
+    display:flex; 
+    flex-direction: column;
+    position: relative; 
+    top: 86px; 
 }
 
 .stat_list {
-margin-top: 30px; 
+margin-top: 15px; 
 margin-left: 40px; 
 margin-right: 40px;
 width: auto; 
+border-radius: .25rem;
+margin-bottom: 0;
+padding-left: 0;
+flex-direction: column;
+display: flex; 
 }
 
 .stat_row {
@@ -120,25 +149,55 @@ width: auto;
  font-size: 20px; 
  font-weight: 500;
  text-align: left; 
- padding-left: 20px !important; 
+ padding-left: 20px !important;
+ border: 1px solid rgba(0, 0, 0, .125);
+ text-decoration: none;
+ color: #212529;
+ padding: .5rem 1rem;
+ display: block;
+ position: relative;
+
 }
 
 .stat_progress {
     font-size: 0.9rem !important; 
     background-color: rgb(26, 35, 75) !important;
     font-weight: 800 !important; 
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    border-radius: .25rem;
+}
 
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: rgb(205 158 95);
+    transition: width .6s ease;
+    color:rgb(26, 35, 75);
 }
 
 .evo_details {
     background-color: rgb(26, 35, 75); 
-    height:430px; 
+    height:418px; 
     width: 970px;
     border-radius: 0 0 4% 4%;
     display:flex; 
     justify-content:center; 
     align-items:center; 
     gap: 30px; 
+    position: relative; 
+    top: 86px; 
 
 }
 
@@ -155,4 +214,21 @@ width: auto;
 .arrow {
     height: 40px; 
     width:auto; 
+}
+
+.name_style {
+    color: cornflowerblue; 
+    font-size: 40px; 
+}
+
+.folder_bar {
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+    gap:200px;
+    padding-top: 9px; 
+}
+
+.current_folder {
+    background-color: rgb(145, 167, 209);
 }

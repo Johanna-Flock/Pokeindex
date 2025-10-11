@@ -1,5 +1,16 @@
 body {
 background-color: rgb(26, 35, 75) !important;
+box-sizing: border-box;
+margin:0; 
+font-family: "raleway";
+line-height: 1.5;
+}
+
+.input {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 
 .all_pokemons {
@@ -22,7 +33,9 @@ background-color: rgb(26, 35, 75) !important;
     flex-wrap: wrap;
     margin-top: 100px; 
     gap: 100px; 
-    margin-bottom: 100px; 
+    margin-bottom: 50px; 
+    margin-right: 50px; 
+    margin-left:50px; 
 }
 
 .pokecards {
@@ -91,4 +104,12 @@ h2.poke_names {
     
 }
 
+
+@media (max-width: 1370px) {
+
+
+
+
+
+}
 

@@ -1,27 +1,15 @@
-function showPokeWithOneType (i) {
-    document.getElementById("names").innerHTML += `
-    <div class="pokecards ${PokeDetails[i].types[0].type.name}" onclick="showDetails(${i})">
-    <h2 class="poke_names">${allPkms[i]}</h2>
-    <img src="${PokeDetails[i].sprites.front_default}" class="img_size" alt="">
-    <div class="poke_types">
-    <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_img_size" alt="">
-    </div>
-    </div>
-    `
-
-}
-
-function showPokeWithTwoTypes (i) {
+function showPokemon (i) {
+    const type1 = PokeDetails[i].types[1];
      document.getElementById("names").innerHTML += `
     <div class="pokecards ${PokeDetails[i].types[0].type.name}" onclick="showDetails(${i})">
     <h2 class="poke_names">${allPkms[i]}</h2>
     <img src="${PokeDetails[i].sprites.front_default}" class="img_size" alt="">
     <div class="poke_types">
     <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_img_size" alt="">
-    <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_img_size" alt="">
+    ${type1 ? '<img src="./img/' + type1.type.name + '.jpg" class="type_img_size" alt="">' : ''}
     </div>
     </div>
-    `
+    `;
 }
 
 function renderButton() {
@@ -32,7 +20,8 @@ function renderButton() {
     `
 }
 
-function getTemplateOneTyp (i, abilities) {
+function getTemplatePokeDetails (i) {
+    const type1 = PokeDetails[i].types[1];
     document.getElementById("blue_overlay").innerHTML +=`
     <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
     <header class="${PokeDetails[i].types[0].type.name} ">
@@ -41,74 +30,35 @@ function getTemplateOneTyp (i, abilities) {
     <div class="background-dark w100 d_flex pad_btm">
     <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">
     <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
+    ${type1 ? '<img src="./img/' + type1.type.name + '.jpg" class="type_detail" alt="">' : ''}
     </div>
+    <div class="folder_bar">
+    <img src="./img/left-arrow.png" class="arrow" onclick= "nextPokeLeft(${i},event)"> </img>
     <div class="btn-group" role="group" aria-label="Basic example">
     <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
     <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
     <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
     </div>
-    <div class="all_details" id="all_details">
-    <div class="main_details"> 
-    <ul class="list-group main_list">
-    <li class="list-group-item main_row">height: ${PokeDetails[i].height} </li>
-    <li class="list-group-item main_row">weight: ${PokeDetails[i].weight}</li>
-    <li class="list-group-item main_row">abilities: ${abilities} </li>
-    </ul>
-    </div>
-    <img src="${PokeDetails[i].sprites.other.dream_world.front_default}" class="img_dream" alt="">
-    </div>
+    <img src="./img/right-arrow.png" class="arrow" onclick= "nextPokeRight(${i},event)"> </img>
     </div>
     `
 }
 
-
-function getTemplateTwoTypes (i,abilities) {
+function renderMainTemplate(i, abilities) {
     document.getElementById("blue_overlay").innerHTML +=`
-    <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
-    <header class="${PokeDetails[i].types[0].type.name} ">
-    <h2 class="poke_names">${allPkms[i]}</h2>
-    </header>
-    <div class="background-dark w100 d_flex pad_btm">
-    <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">
-    <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
-    <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_detail" alt="">
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
-    <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
-    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
-    </div>
-    <div class="all_details" id="all_details">
-    <div class="main_details"> 
+    <div class="main_details" id="main_details"> 
     <ul class="list-group main_list">
     <li class="list-group-item main_row">height: ${PokeDetails[i].height} </li>
     <li class="list-group-item main_row">weight: ${PokeDetails[i].weight}</li>
     <li class="list-group-item main_row">abilities: ${abilities} </li>
     </ul>
-    </div>
     <img src="${PokeDetails[i].sprites.other.dream_world.front_default}" class="img_dream" alt="">
-    </div>
     </div>
     `
 }
-
 
 function renderStatTemplate(i) {
     document.getElementById("blue_overlay").innerHTML +=`
-    <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
-    <header class="${PokeDetails[i].types[0].type.name} ">
-    <h2 class="poke_names">${allPkms[i]}</h2>
-    </header>
-    <div class="background-dark w100 d_flex pad_btm">
-    <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">
-    <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
-    <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_detail" alt="">
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
-    <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
-    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
-    </div>
     <div class="stat_details"> 
     <ul class="list-group stat_list">
     <li class="list-group-item stat_row">hp:
@@ -147,31 +97,12 @@ function renderStatTemplate(i) {
 }
 
 
-function renderEvoTemplate(ifp,isp,itp,i) {
+function renderEvoTemplate() {
     document.getElementById("blue_overlay").innerHTML +=`
-    <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
-    <header class="${PokeDetails[i].types[0].type.name} ">
-    <h2 class="poke_names">${allPkms[i]}</h2>
-    </header>
-    <div class="background-dark w100 d_flex pad_btm">
-    <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">
-    <img src="${PokeDetails[i].sprites.other.home.front_default}" class="detail_img" alt="">
-    <img src="./img/${PokeDetails[i].types[1].type.name}.jpg" class="type_detail" alt="">
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" id="main" class="btn folder" onclick="renderMain(${i},event)">MAIN</button>
-    <button type="button" id="stat" class="btn folder" onclick="renderStat(${i},event)">STAT</button>
-    <button type="button" id="evo" class="btn folder" onclick="fetchEvoAndRender(${i},event)">EVO</button>
-    </div>
-    <img src="./img/left-arrow.png" class="arrow" onclick= "nextPokeLeft(${i},event)"> </img>
-    <img src="./img/right-arrow.png" class="arrow" onclick= "nextPokeRight(${i},event)"> </img>
     <div class="evo_details"> 
-    <img src="${PokeDetails[ifp].sprites.other.home.front_default}" class="detail_img" alt=""></img>
-    <img src="./img/dot-arrow.png" class="evo_arrow"></img>
-    <img src="${PokeDetails[isp].sprites.other.home.front_default}" class="detail_img" alt=""></img>
-    <img src="./img/dot-arrow.png" class="evo_arrow"></img>
-    <img src="${PokeDetails[itp].sprites.other.home.front_default}" class="detail_img" alt=""></img>
+    ${indexPokeEvo[0]=== -1? `<p class="name_style"> ${pokeEvolution[0]} </p>`:`</img> <img src="${PokeDetails[indexPokeEvo[0]].sprites.other.home.front_default}" class="detail_img" alt="">` }
+    ${indexPokeEvo[1] && indexPokeEvo[1] !== -1 ? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[1]].sprites.other.home.front_default}" class="detail_img" alt="">`: "" }
+    ${indexPokeEvo[2] && indexPokeEvo[2] !== -1? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[2]].sprites.other.home.front_default}" class="detail_img" alt="">`: "" }
     </div>
     `
-
 }
