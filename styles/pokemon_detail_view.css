@@ -4,7 +4,7 @@
     justify-content:center;
     flex-direction: column;
     align-items: center;
-    top:100px; 
+    top:0px; 
     right:0px; 
     left:0px; 
     height: 100vh; 
@@ -26,6 +26,15 @@
     align-items: center; 
     flex-direction: column;
     background-color: cornflowerblue;
+}
+
+.header-detail_pokemon {
+    display:flex; 
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding-right: 200px; 
+    padding-left: 200px;
 }
 
 .detail_pokemon h2 {
@@ -57,13 +66,16 @@
 }
 
 .folder {
-    font-size: 24px !important; 
-    color:rgb(26, 35, 75) !important;
+    font-size: 24px; 
+    color:rgb(26, 35, 75);
     background-color: cornflowerblue;
-    border: 1px solid rgb(26, 35, 75) !important; 
-    width: 130px !important; 
-    font-weight: 500 !important;
-    
+    border: 1px solid rgb(26, 35, 75); 
+    width: 130px; 
+    font-weight: 500;   
+}
+
+.folder:hover {
+    background-color: rgb(54, 116, 230);
 }
 
 .btn-group {
@@ -73,8 +85,6 @@
     position: relative;
     flex: 1 1 auto;
     cursor: pointer;
-
-
 }
 
 .main_details {
@@ -85,35 +95,33 @@
     display:flex; 
     flex-direction: column;
     position: relative; 
-    top: 86px; 
+    top: 185px; 
 }
 
 .main_list {
-margin-top: 60px; 
-margin-left: 40px; 
-margin-right: 40px;
-margin-bottom: 0;
-width: auto; 
-display: flex;
-flex-direction: column;
-padding-left: 0;
-border-radius: .25rem;
+    margin-top: 60px; 
+    margin-left: 40px; 
+    margin-right: 40px;
+    margin-bottom: 0;
+    width: auto; 
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    border-radius: .25rem;
 }
 
 .main_row {
- background-color: cornflowerblue !important;
- font-size: 24px; 
- font-weight: 500;
- text-align: left; 
- padding-left: 30px !important;
- position: relative;
- display: block;
- padding: .5rem 1rem;
- text-decoration: none;
- border: 1px solid rgba(0, 0, 0, .125);
+    background-color: cornflowerblue;
+    font-size: 24px; 
+    font-weight: 500;
+    text-align: left; 
+    padding-left: 30px;
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, .125);
 }
-
-
 
 .img_dream {
     padding-top: 20px; 
@@ -129,40 +137,39 @@ border-radius: .25rem;
     display:flex; 
     flex-direction: column;
     position: relative; 
-    top: 86px; 
+    top: 185px; 
 }
 
 .stat_list {
-margin-top: 15px; 
-margin-left: 40px; 
-margin-right: 40px;
-width: auto; 
-border-radius: .25rem;
-margin-bottom: 0;
-padding-left: 0;
-flex-direction: column;
-display: flex; 
+    margin-top: 15px; 
+    margin-left: 40px; 
+    margin-right: 40px;
+    width: auto; 
+    border-radius: .25rem;
+    margin-bottom: 0;
+    padding-left: 0;
+    flex-direction: column;
+    display: flex; 
 }
 
 .stat_row {
- background-color: cornflowerblue !important;
- font-size: 20px; 
- font-weight: 500;
- text-align: left; 
- padding-left: 20px !important;
- border: 1px solid rgba(0, 0, 0, .125);
- text-decoration: none;
- color: #212529;
- padding: .5rem 1rem;
- display: block;
- position: relative;
-
+    background-color: cornflowerblue;
+    font-size: 20px; 
+    font-weight: 500;
+    text-align: left; 
+    padding-left: 20px;
+    border: 1px solid rgba(0, 0, 0, .125);
+    text-decoration: none;
+    color: #212529;
+    padding: .5rem 1rem;
+    display: block;
+    position: relative;
 }
 
 .stat_progress {
-    font-size: 0.9rem !important; 
-    background-color: rgb(26, 35, 75) !important;
-    font-weight: 800 !important; 
+    font-size: 0.9rem; 
+    background-color: rgb(26, 35, 75);
+    font-weight: 800; 
     display: flex;
     height: 1rem;
     overflow: hidden;
@@ -197,12 +204,11 @@ display: flex;
     align-items:center; 
     gap: 30px; 
     position: relative; 
-    top: 86px; 
-
+    top: 185px; 
 }
 
 .evo_img {
-    height:100px;
+    height:180px;
     width:auto;
 }
 
@@ -219,6 +225,7 @@ display: flex;
 .name_style {
     color: cornflowerblue; 
     font-size: 40px; 
+    margin:0; 
 }
 
 .folder_bar {
@@ -231,4 +238,283 @@ display: flex;
 
 .current_folder {
     background-color: rgb(145, 167, 209);
+}
+
+@media (max-width: 1140px) {
+
+.detail_pokemon { 
+    width: 700px;
+}
+
+.detail_pokemon header {
+    width: 310px; 
+}
+
+.main_details {
+    width: 679px;
+}
+
+.folder_bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding-top: 9px;
+    cursor:pointer; 
+}
+
+.stat_details {
+    width: 679px;
+    align-items: center;
+}
+
+.stat_list {
+    margin-top: 15px; 
+    margin-left: 0px; 
+    margin-right: 0px;
+    width:  630px; 
+    border-radius: .25rem;
+    margin-bottom: 0;
+    padding-left: 0;
+    flex-direction: column;
+    display: flex; 
+}
+
+.evo_details {
+    width: 679px;
+    gap: 10px; 
+}
+
+.evo_img {
+    height:160px;
+    width:auto;
+}
+
+.evo_arrow {
+    height: 50px; 
+    width:auto; 
+}
+}
+
+@media (max-width: 770px) {
+
+.detail_pokemon { 
+    width: 500px;
+    }
+
+.detail_pokemon header {
+    width: 100px; 
+    padding-right: 200px; 
+    padding-left: 200px;
+    border-radius: 17px 17px 0 0;
+}
+.main_details {
+    width: 487px;
+    
+}
+
+.folder_bar {
+    gap: 40px;
+}
+
+.folder {
+    font-size: 20px;
+    width: 100px;
+}
+
+.stat_details {
+    width: 487px;
+}
+
+.stat_list {
+    width:  460px; 
+}
+
+.evo_details {
+    width: 487px;
+    flex-direction: column-reverse; 
+    gap:10px;
+}
+
+.evo_img {
+    height:100px;
+    width:auto;
+}
+
+.evo_arrow {
+    height: 30px; 
+    width:auto; 
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+}
+
+@media (max-width: 570px) {
+
+.detail_pokemon { 
+    width: 350px;
+}
+
+.detail_pokemon header {
+    width: 356px; 
+    padding-right: 0px; 
+    padding-left: 0px;
+}
+
+.d_flex {
+    gap: 15px; 
+}
+
+.folder_bar {
+    gap: 15px;
+}
+
+.folder {
+    font-size: 16px;
+    width: 70px;
+}
+
+.main_details {
+    width: 330px;
+}
+
+.main_list {
+    margin-top: 25px;
+}
+
+.stat_details {
+    width: 330px;
+}
+
+.stat_list {
+    width:  300px; 
+}
+
+.evo_details {
+    width: 330px;
+}
+
+.evo_img {
+    height:100px;
+    width:auto;
+}
+
+.evo_arrow {
+    height: 30px; 
+    width:auto; 
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+}
+
+@media (max-width: 500px) {
+
+.img_dream {
+    padding-top: 20px;
+    height: 140px;
+    width: auto;
+}
+}
+
+@media (max-width: 410px) {
+
+.detail_pokemon {
+    width: 270px;
+    height: 730px;
+    top:52%; 
+}
+
+.detail_pokemon header {
+    width: 270px; 
+    border-radius: 5px 7px 0 0;
+}
+
+.main_details {
+    width: 260px;
+    height:370px; 
+    top:189px; 
+}
+
+.main_row {
+    font-size: 20px;
+}
+
+.main_list {
+    margin-left: 20px; 
+    margin-right: 20px; 
+    font-size: 20px; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.stat_details {
+    width: 260px;
+    height: 380px;
+    top:189px; 
+}
+
+.stat_list {
+    width: 220px;
+}
+
+.stat_row {
+    padding: .3rem 1rem;
+}
+
+.evo_details {
+    width: 260px;
+    height: 390px;
+    gap:14px; 
+    top:189px; 
+}
+
+.evo_img {
+    height: 80px; 
+    width: auto; 
+}
+
+.name_style {
+    font-size: 30px;
+}
+
+
+.d_flex {
+    gap: 0px;
+}
+
+.img_dream {
+    padding-top: 20px;
+    height: 90px;
+    width: auto;
+}
+
+.folder_bar {
+    gap: 5px;
+}
+
+.folder {
+    font-size: 16px;
+    width: 60px;
+}
+
+.arrow {
+    height: 30px;
+    width: auto;
+}
+
+.btn {
+    padding: .375rem 0rem;
+}
+
+.type_detail{
+    height: 40px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.detail_img {
+    height: 150px;
+    width: auto;
+}
 }

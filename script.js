@@ -18,7 +18,6 @@ function init() {
     getPokemons(path);
 }
 
-
 // fetch the namesOfPokes
 async function getPokemons (path) {
     try {
@@ -30,8 +29,7 @@ async function getPokemons (path) {
     await pokeDetails(allResults)
     renderPokes (); 
     } catch (error) {
-      console.error("Ups, loading has not worked - please try again" , error)
-}
+      console.error("Ups, loading has not worked - please try again" , error)}
 }
 
 // char(0).upperCase for the loaded Pkms
@@ -106,8 +104,7 @@ async function getMorePokemons (path) {
       console.error("Ups, loading has not worked - please try again" , error)
     } finally {
       document.getElementById('loading').classList.add('d_none');
-      document.getElementById("button").classList.remove('d_none')
-    }
+      document.getElementById("button").classList.remove('d_none')}
 }
 
 //render PokeDetails
@@ -166,7 +163,7 @@ async function fetchEvo(i) {
   let Id= await getEvoChainId (name)
   await getEvoChain (Id)}
   catch (error) {
-      console.error("Ups, loading the evolution-chain has failed - please try again" , error)}
+  console.error("Ups, loading the evolution-chain has failed - please try again" , error)}
   getEvoArray(); 
 }
 
@@ -214,7 +211,6 @@ function findIndexOfEvoPokes() {
   pokeEvolution[2]? indexPokeEvo.push(allPkms.findIndex(p => p === pokeEvolution[2])) : null; 
 }
 
-
 //show nextPoke
 function nextPokeRight(i, event) {
   i++
@@ -232,7 +228,7 @@ function nextPokeLeft(i, event) {
   preventBubbling(event)
   document.getElementById("blue_overlay").innerHTML = ""; 
   pokeEvolution = []; 
-  if (i= 0) {
+  if (i=== 0) {
     i= allPkms.length - 1
     renderPokeDetails (i) }
   else {renderPokeDetails (i) }

@@ -24,7 +24,7 @@ function getTemplatePokeDetails (i) {
     const type1 = PokeDetails[i].types[1];
     document.getElementById("blue_overlay").innerHTML +=`
     <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
-    <header class="${PokeDetails[i].types[0].type.name} ">
+    <header class="${PokeDetails[i].types[0].type.name} header-detail_pokemon">
     <h2 class="poke_names">${allPkms[i]}</h2>
     </header>
     <div class="background-dark w100 d_flex pad_btm">
@@ -60,33 +60,33 @@ function renderMainTemplate(i, abilities) {
 function renderStatTemplate(i) {
     document.getElementById("blue_overlay").innerHTML +=`
     <div class="stat_details"> 
-    <ul class="list-group stat_list">
-    <li class="list-group-item stat_row">hp:
+    <ul class="stat_list">
+    <li class="stat_row">hp:
     <div class="progress stat_progress">
     <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${PokeDetails[i].stats[0].base_stat}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">${PokeDetails[i].stats[0].base_stat}</div>
     </div> 
     </li>
-    <li class="list-group-item stat_row">attack: 
+    <li class="stat_row">attack: 
     <div class="progress stat_progress">
     <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ${PokeDetails[i].stats[1].base_stat}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${PokeDetails[i].stats[1].base_stat}</div>
     </div>
     </li>
-    <li class="list-group-item stat_row">defense:
+    <li class="stat_row">defense:
     <div class="progress stat_progress">
     <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${PokeDetails[i].stats[2].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${PokeDetails[i].stats[2].base_stat}</div>
     </div>
     </li>
-    <li class="list-group-item stat_row">special-attack:
+    <li class="stat_row">special-attack:
     <div class="progress stat_progress">
     <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: ${PokeDetails[i].stats[3].base_stat}%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">${PokeDetails[i].stats[3].base_stat}</div>
     </div>
     </li>
-    <li class="list-group-item stat_row">special-defense:
+    <li class="stat_row">special-defense:
     <div class="progress stat_progress">
     <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: ${PokeDetails[i].stats[4].base_stat}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">${PokeDetails[i].stats[4].base_stat}</div>
     </div>
     </li>
-    <li class="list-group-item stat_row">speed:
+    <li class="stat_row">speed:
     <div class="progress stat_progress">
     <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" style="width: ${PokeDetails[i].stats[5].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${PokeDetails[i].stats[5].base_stat}</div>
     </div>
@@ -96,13 +96,12 @@ function renderStatTemplate(i) {
   `
 }
 
-
 function renderEvoTemplate() {
     document.getElementById("blue_overlay").innerHTML +=`
     <div class="evo_details"> 
-    ${indexPokeEvo[0]=== -1? `<p class="name_style"> ${pokeEvolution[0]} </p>`:`</img> <img src="${PokeDetails[indexPokeEvo[0]].sprites.other.home.front_default}" class="detail_img" alt="">` }
-    ${indexPokeEvo[1] && indexPokeEvo[1] !== -1 ? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[1]].sprites.other.home.front_default}" class="detail_img" alt="">`: "" }
-    ${indexPokeEvo[2] && indexPokeEvo[2] !== -1? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[2]].sprites.other.home.front_default}" class="detail_img" alt="">`: "" }
+    ${indexPokeEvo[0]=== -1? `<p class="name_style"> ${pokeEvolution[0]} </p>`:`</img> <img src="${PokeDetails[indexPokeEvo[0]].sprites.other.home.front_default}" class="evo_img" alt="">` }
+    ${indexPokeEvo[1] && indexPokeEvo[1] !== -1 ? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[1]].sprites.other.home.front_default}" class="evo_img" alt="">`: "" }
+    ${indexPokeEvo[2] && indexPokeEvo[2] !== -1? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[2]].sprites.other.home.front_default}" class="evo_img" alt="">`: "" }
     </div>
     `
 }

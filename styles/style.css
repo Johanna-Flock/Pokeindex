@@ -1,9 +1,9 @@
 body {
-background-color: rgb(26, 35, 75) !important;
-box-sizing: border-box;
-margin:0; 
-font-family: "raleway";
-line-height: 1.5;
+    background-color: rgb(26, 35, 75);
+    box-sizing: border-box;
+    margin:0; 
+    font-family: "raleway";
+    line-height: 1.5;
 }
 
 .input {
@@ -74,8 +74,7 @@ line-height: 1.5;
     height: 30px; 
     width: auto; 
     border-radius: 17%;
-    padding-bottom: 0px !important;
-    
+    padding-bottom: 0px !important; 
 }
 
 .poke_types {
@@ -100,16 +99,7 @@ h2.poke_names {
     position: fixed; 
     top: 50%; 
     left: 50%;
-    transform:translate(-50%, -50%);
-    
+    transform:translate(-50%, -50%);  
 }
 
-
-@media (max-width: 1370px) {
-
-
-
-
-
-}
 
