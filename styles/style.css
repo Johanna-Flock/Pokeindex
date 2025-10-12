@@ -49,7 +49,7 @@ body {
 }
 
 .pokecards:hover .img_size {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .pokecards:hover {
@@ -64,8 +64,8 @@ body {
 }
 
 .img_size {
-    height:120px !important;
-    width:auto !important; 
+    height:130px;
+    width:auto; 
     object-fit: cover;
     transition: transform 0.5s ease;
 }
@@ -74,7 +74,7 @@ body {
     height: 30px; 
     width: auto; 
     border-radius: 17%;
-    padding-bottom: 0px !important; 
+    padding-bottom: 0px; 
 }
 
 .poke_types {
@@ -88,7 +88,7 @@ body {
 }
 
 h2.poke_names {
-    padding-top: 15px; 
+    padding-top: 0px; 
     color:rgb(3, 5, 16);
     font-weight: 800;
 }

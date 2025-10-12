@@ -26,6 +26,7 @@ function getTemplatePokeDetails (i) {
     <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
     <header class="${PokeDetails[i].types[0].type.name} header-detail_pokemon">
     <h2 class="poke_names">${allPkms[i]}</h2>
+    <img class="close" src="./img/close.png" onclick="closeDialogue()"></img>
     </header>
     <div class="background-dark w100 d_flex pad_btm">
     <img src="./img/${PokeDetails[i].types[0].type.name}.jpg" class="type_detail" alt="">

@@ -23,7 +23,7 @@
     padding-bottom: 30px; 
 }
 
-header {
+.header {
     display:flex; 
     align-items: center;
     justify-content: center;
@@ -34,7 +34,7 @@ header {
     gap: 100px; 
 }
 
-header h1 {
+.header h1 {
     font-size: 28px;
 }
 
@@ -91,13 +91,13 @@ header h1 {
 
 @media (max-width: 1370px) {
 
-header {
+.header {
     gap: 80px; 
     padding-left: 100px;
     padding-right: 100px;
 }
 
-header h1 {
+.header h1 {
     font-size: 24px;
 }
 
@@ -105,7 +105,7 @@ header h1 {
 
 
 @media (max-width: 1100px) {
-    header h1 {
+.header h1 {
     font-size: 22px;
     text-align:center; 
 }
@@ -117,7 +117,7 @@ header h1 {
 }
 
 @media (max-width: 900px) {
-header {
+.header {
     gap: 50px; 
     padding-left: 100px;
     padding-right: 100px;
@@ -125,7 +125,7 @@ header {
 }
 
 @media (max-width: 600px) {
-header {
+.header {
     gap: 30px; 
     padding-left: 50px;
     padding-right: 50px;
@@ -137,7 +137,7 @@ header {
 }
 
 @media (max-width: 500px) {
-    header h1 {
+.header h1 {
     font-size: 20px;
     text-align:center; 
     margin-bottom:10px; 
@@ -148,7 +148,7 @@ header {
     width: auto;
 
 }
-header {
+.header {
     display:flex; 
     align-items: center;
     justify-content: center;
@@ -159,6 +159,7 @@ header {
     padding-right: 20px;
 }
 }
+
 
 
 
