@@ -1,6 +1,5 @@
-function showPokemon (i) {
-    const type1 = PokeDetails[i].types[1];
-     document.getElementById("names").innerHTML += `
+function showPokemon(i, type1) {
+    document.getElementById("names").innerHTML += `
     <div class="pokecards ${PokeDetails[i].types[0].type.name}" onclick="showDetails(${i})">
     <h2 class="poke_names">${allPkms[i]}</h2>
     <img src="${PokeDetails[i].sprites.front_default}" class="img_size" alt="">
@@ -13,17 +12,14 @@ function showPokemon (i) {
 }
 
 function renderButton() {
-    let contenRef= document.getElementById("button")
-    contenRef.innerHTML = ""; 
     document.getElementById("button").innerHTML += `
-    <div id="feedback" class="userfeedback d_none"> Sorry! We couldn't find Pokémons for your search - Try another name or click <strong> "Load more Pokémon"</strong></div>
-    <div id="userfeedback" class="userfeedback d_none"> To find more Pokémon for your search - Try again and click <strong>"Load more Pokémon" </strong> Maybe there are more!</div>
+    <div id="feedback2" class="userfeedback d_none"> Sorry! We couldn't find Pokémons for your search - Try another name!</div>
+    <div id="userfeedback" class="userfeedback d_none"> To find more Pokémon for your search - <strong>"Load more Pokémon" </strong> and try again! Maybe there are more!</div>
     <button id="load_Pokes" class="btn" onclick="renderMorePokes()">Load more Pokémon</button>
     `
 }
 
-function getTemplatePokeDetails (i) {
-    const type1 = PokeDetails[i].types[1];
+function getTemplatePokeDetails (i, type1) {
     document.getElementById("blue_overlay").innerHTML +=`
     <div class="detail_pokemon border-${PokeDetails[i].types[0].type.name}" onclick="preventBubbling(event)">
     <header class="${PokeDetails[i].types[0].type.name} header-detail_pokemon">
@@ -106,5 +102,11 @@ function renderEvoTemplate() {
     ${indexPokeEvo[1] && indexPokeEvo[1] !== -1 ? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[1]].sprites.other.home.front_default}" class="evo_img" alt="">`: "" }
     ${indexPokeEvo[2] && indexPokeEvo[2] !== -1? `<img src="./img/dot-arrow.png" class="evo_arrow"></img> <img src="${PokeDetails[indexPokeEvo[2]].sprites.other.home.front_default}" class="evo_img" alt="">`: "" }
     </div>
+    `
+}
+
+function userFeedback() {
+    document.getElementById("blue_overlay").innerHTML +=`
+    <div id="feedback_details" class="userfeedback user"> There is only one Pokémon in your search! <strong> Search or load more Pokémons to view more details. </strong></div>
     `
 }

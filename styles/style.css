@@ -128,21 +128,7 @@ h2.poke_names {
 
 .user {
     position: absolute !important;
-    top: 25px !important;
-    width: 430px !important; 
-}
-
-@media (max-width: 440px) {
-
-    .user {
-    top: 65px !important;
-    width: 250px !important; 
-    font-size: 16px; 
-}
-
-    .userfeedback {
-    width: 220px; 
-}
+    top: 40px !important;
 }
 
 @media (max-width: 440px) {
