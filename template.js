@@ -16,7 +16,9 @@ function renderButton() {
     let contenRef= document.getElementById("button")
     contenRef.innerHTML = ""; 
     document.getElementById("button").innerHTML += `
-    <button class="btn" onclick="renderMorePokes()">Show more Pokémon</button>
+    <div id="feedback" class="userfeedback d_none"> Sorry! We couldn't find Pokémons for your search - Try another name or click <strong> "Load more Pokémon"</strong></div>
+    <div id="userfeedback" class="userfeedback d_none"> To find more Pokémon for your search - Try again and click <strong>"Load more Pokémon" </strong> Maybe there are more!</div>
+    <button id="load_Pokes" class="btn" onclick="renderMorePokes()">Load more Pokémon</button>
     `
 }
 
