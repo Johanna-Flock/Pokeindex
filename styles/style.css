@@ -129,11 +129,17 @@ h2.poke_names {
 .user {
     position: absolute !important;
     top: 40px !important;
+    z-index: 1; 
 }
 
 @media (max-width: 440px) {
     .userfeedback {
     width: 220px; 
+}
+
+.user {
+  top: 126px !important;
+  background-color: rgb(26, 35, 75); 
 }
 }
 

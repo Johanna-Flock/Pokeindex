@@ -1,4 +1,14 @@
-let allPkms = []; 
+/**
+ * allPkms -->Array with all pokenames 
+ * currentPkms --> Array with all searched pokes
+ * PokeDetails --> object with basic details of loaded Pokes
+ * allResults --> array which includes new loaded Pokes
+ * evoChain --> object which includes the loaded evochain
+ * pokeEvolution --> array which includes the names of the Pokes in the evolution chain 
+ * indexPokeEvo --> arrray which includes the indexes in allPkms of the Pokes in the evochain 
+ */
+
+let allPkms = []; // 
 
 let currentPkms = []; 
 
@@ -18,6 +28,12 @@ function init() {
   getPokemons(path);
 }
 
+
+/**
+ * function to get the Pokes and add to object PokeDetails
+ * @param {string} path 
+ */
+
 async function getPokemons(path) {
   try {
     let response = await fetch(BASE_URL + path)
@@ -32,6 +48,10 @@ async function getPokemons(path) {
   }
 }
 
+/**
+ * function which sets the first char in UpperCase and add them to allPkms
+ * @param {Json} results 
+ */
 function loadPokes(results) {
   for (let i = 0; i < results.length; i++) {
     let pokeName = results[i].name.charAt(0).toUpperCase() + results[i].name.slice(1);
@@ -59,6 +79,11 @@ function renderPokes() {
   renderButton()
 }
 
+/**
+ * filterfunction
+ * @param {string} filterWord 
+ */
+
 function filterAndShowNames(filterWord) {
   document.getElementById("button").innerHTML=""; 
   let contentRef = document.getElementById("names")
@@ -76,6 +101,10 @@ function filterAndShowNames(filterWord) {
   }
 }
 
+/**
+ * In this function the index of the searched Pokes in currentPkms is searched in allPkms
+ */
+
 function renderPokesSearch() {
   let contentRef = document.getElementById("names")
   contentRef.innerHTML = "";
@@ -88,6 +117,11 @@ function renderPokesSearch() {
     showPokemon(i,type1)}
   }
 }
+
+
+/**
+ * function to load more Pokes
+ */
 
 function renderMorePokes() {
   const offset = Object.keys(PokeDetails).length;
@@ -107,7 +141,7 @@ async function getMorePokemons(path) {
   } catch (error) {
     console.error("Ups, loading has not worked - please try again", error)
   } finally {
-    checkFilter()
+    // checkFilter() 
    toggleUserFeedback ()
   }
 }
@@ -117,18 +151,26 @@ document.getElementById('loading').classList.toggle('d_none');
 document.getElementById("button").classList.toggle('d_none')
 }
 
-function checkFilter() {
-  let input = document.getElementById("search").value;
-  if (input.length >= 3) {
-    currentPkms = allPkms.filter(name =>
-      name.toLowerCase().startsWith(input.toLowerCase()));
-    renderPokesSearch();
-    document.getElementById("userfeedback").classList.remove("d_none")
-    document.getElementById("load_Pokes").classList.add("d_none")
-  } else {
-    renderPokes();
-  }
-}
+/**
+ * this function is optional - it tests if there is a search and shows only loaded Pokes which are searched. You can search more Pokes 
+ * while your search. But it isnt intuitive. 
+ */
+// function checkFilter() {
+//   let input = document.getElementById("search").value;
+//   if (input.length >= 3) {
+//     currentPkms = allPkms.filter(name =>
+//       name.toLowerCase().startsWith(input.toLowerCase()));
+//     renderPokesSearch();
+//     document.getElementById("userfeedback").classList.remove("d_none")
+//   } else {
+//     renderPokes();
+//   }
+// }
+
+/**
+ * function to open the Details about the loaded Pokes and render also the main folder
+ * @param {index of the Poke in all Pkms} i 
+ */
 
 function renderPokeDetails(i) {
   let abilities = getAbilities(i)
@@ -156,6 +198,12 @@ function renderMain(i, event) {
   document.getElementById("main").classList.add("current_folder")
 }
 
+/**
+ * 
+ * @param {index of the Poke in allPkms} i 
+ * @param {prevent eventbubbling} event 
+ */
+
 function renderStat(i, event) {
   preventBubbling(event)
   document.getElementById("blue_overlay").innerHTML = "";
@@ -164,6 +212,13 @@ function renderStat(i, event) {
   renderStatTemplate(i)
   document.getElementById("stat").classList.add("current_folder")
 }
+
+/**
+ * function to first fetch the evochain id, of the current Pkm which can be read out of the url
+ * then the evochainurl is fetched (its another api endpoint)
+ * @param {index of the Poke in allPkms} i 
+ * @param {prevent eventbubbling} event 
+ */
 
 async function fetchEvoAndRender(i, event) {
   preventBubbling(event)
@@ -211,6 +266,11 @@ async function getEvoChain(Id) {
   }
 }
 
+/**
+ * Here we get the array PokeEvolution which is initialized below; 
+ * It depends how many evolutions a Poke has, all are pushed in this array
+ */
+
 function getEvoArray() {
   pokeEvolution = [];
   const firstPoke = evoChain.species.name
@@ -225,6 +285,9 @@ function getEvoArray() {
       evoChain.evolves_to[0].evolves_to[0].species.name.slice(1)) : null;
 }
 
+/**
+ * then we find the index of the Pokes in the evolution array in allPkms
+ */
 function findIndexOfEvoPokes() {
   indexPokeEvo = [];
   let iFirstPoke = allPkms.findIndex(p => p === pokeEvolution[0])
@@ -233,6 +296,12 @@ function findIndexOfEvoPokes() {
   pokeEvolution[2] ? indexPokeEvo.push(allPkms.findIndex(p => p === pokeEvolution[2])) : null;
 }
 
+/**
+ * functions to view more Pokes to the right or to the left in the detail view
+ * It checks also if there is a current search and if there is one, only the Pokes of the search are shown
+ * @param {index of currentPkm in allPkms} i 
+ * @param {prevent event bubbling} event 
+ */
 function nextPokeRight(i, event) {
   preventBubbling(event)
   document.getElementById("blue_overlay").innerHTML = "";
